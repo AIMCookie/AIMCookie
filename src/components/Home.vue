@@ -17,10 +17,10 @@
       </div>
       <el-menu mode="horizontal">
         <el-menu-item index="1">
-          <a href="#productIntro" style="text-decoration: none">제품 소개</a>
+          <a href="./#productIntro" style="text-decoration: none">제품 소개</a>
         </el-menu-item>
         <el-menu-item index="2">
-          <a href="#playList" style="text-decoration: none">플레이 리스트</a>
+          <a href="./#playList" style="text-decoration: none">플레이 리스트</a>
         </el-menu-item>
         <el-menu-item index="3" @click="$router.push({ name: 'community' })">
           <span>커뮤니티</span>
