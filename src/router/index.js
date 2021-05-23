@@ -1,19 +1,63 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '@/components/Home.vue'
+import appLayout from '@/views/appLayout.vue'
+import adminLayout from '@/views/adminLayout.vue'
+
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path:'/app',
+    name:'app',
+    component: appLayout,
+    children:[
+      {
+        path:'dashboard',
+        name:'dashboard',
+        component : ()=> import('@/components/dashboard.vue')
+      },
+      {
+        path:'play',
+        name:'play',
+        component : ()=> import('@/components/play.vue')
+      },
+      {
+        path:'community',
+        name:'community',
+        component : ()=> import('@/components/community.vue')
+      },
+      {
+        path:'contact',
+        name:'contact',
+        component : ()=> import('@/components/contact.vue')
+      }
+    ]
+  },
+  {
+    path:'/admin',
+    name:'admin',
+    component: adminLayout,
+    children:[
+      {
+        path:'memberManagement',
+        name:'admin_memberManagement',
+        component : ()=> import('@/components/admin_memberManagement.vue')
+      },
+      {
+        path:'salesManagement',
+        name:'admin_salesManagement',
+        component : ()=> import('@/components/admin_salesManagement.vue')
+      },
+      {
+        path:'inquiryManagement',
+        name:'admin_inquiryManagement',
+        component : ()=> import('@/components/admin_inquiryManagement.vue')
+      }
+    ]
   }
 ]
 
