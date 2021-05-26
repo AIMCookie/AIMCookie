@@ -23,6 +23,6 @@ git reset --hard origin/main
 
 #
 git stash pop
-git add *
+git add -A
 git commit -m "$commitMessage"
-git push -f origin $branch
+git push -f origin $currentBranch
