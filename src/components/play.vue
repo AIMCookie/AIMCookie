@@ -33,7 +33,7 @@
     <el-form-item
       style="margin-top: 0px; margin-left: auto; margin-right: 100px"
     >
-      <el-button type="primary" @click="onSubmit">시작</el-button>
+      <el-button class="submitBtn" type="primary" @click="onSubmit">시작</el-button>
     </el-form-item>
   </el-form>
 </template>
@@ -130,7 +130,7 @@ export default {
   flex-flow: row wrap;
   justify-content: space-between;
 }
-.el-button {
+.submitBtn {
   display: block;
   width: 150px;
   height: 60px;
