@@ -51,6 +51,7 @@ body {
   color: #409eff;
 }
 .el-main{
+  position: relative;
   padding:0;
   overflow: hidden;
 }
