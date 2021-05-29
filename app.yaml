@@ -2,13 +2,13 @@ runtime: nodejs14
 handlers:
 
 # Serve all static files with url ending with a file extension
-- url: /(.*\..+)$
+- url: /aimcookie/(.*\..+)$
   secure: always
   static_files: dist/\1
   upload: dist/.*\..+$
 
 # Catch all handler to index.html
-- url: /.*
+- url: /aimcookie/.*
   secure: always
   static_files: dist/index.html
   upload: dist/index.html
