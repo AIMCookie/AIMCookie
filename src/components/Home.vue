@@ -12,7 +12,7 @@
           fit="fill"
         ></el-image>
         <div class="companyName">
-          <h5>AI Music Cookie</h5>
+          <h5>AI Music Coo</h5>
         </div>
       </div>
       <el-menu mode="horizontal">
