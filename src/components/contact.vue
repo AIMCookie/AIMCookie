@@ -18,7 +18,7 @@ export default {
   name: "contact",
 };
 </script>
-	<style >
+<style scoped>
 h1 {
   margin: 10px 0;
 }
