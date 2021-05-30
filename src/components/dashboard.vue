@@ -77,6 +77,11 @@ export default {
           name: "보고싶다",
           comments: "노래가 좋네요!!",
         },
+        {
+          No: "2",
+          name: "형",
+          comments: "역시.. 갓 노라조 형님들 ,,,",
+        },
       ],
     };
   },
