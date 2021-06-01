@@ -50,4 +50,9 @@ body {
 .el-menu-item {
   color: #409eff;
 }
+.el-main{
+  position: relative;
+  padding:0;
+  overflow: hidden;
+}
 </style>

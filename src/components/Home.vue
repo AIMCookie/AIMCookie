@@ -48,13 +48,54 @@
           more recently with desktop publishing software like Aldus PageMaker
           including versions of Lorem Ipsum.
         </p>
-        <el-button type="primary" round @click="$router.push({ name: 'play' })">무료 플레이</el-button>
+        <el-button type="primary" round @click="$router.push({ name: 'play' })"
+          >무료 플레이</el-button
+        >
       </div>
-      <div id="playList" class="playList">플레이 리스트</div>
-      <div id="teamInfo" class="teamInfo">팀원 소개</div>
+      <div id="playList" class="playList">플레이 리스트 <i class="el-icon-video-play"></i>
+
+      <el-table
+        ref="singleTable"
+        :data="tableData"
+        highlight-current-row
+        @current-change="handleCurrentChange"
+        style="width: 90%"
+      >
+       
+        <el-table-column property="rank" label="rank" width="120"  align="center">
+        </el-table-column>
+        <el-table-column property="name" label="name" align="center" >
+        </el-table-column>
+        <el-table-column property="length" label="length" width="120"  align="center" > 
+        </el-table-column>
+      </el-table>
+
+    </div>
+      
+
+    <div id="teamInfo" class="teamInfo">팀원 소개 <i class="el-icon-user"></i>
+
+        <div class="our_image"> 
+          <el-image :src="require('@/assets/our_image.jpg')"></el-image>
+          <el-image :src="require('@/assets/our_image.jpg')"></el-image> 
+          <el-image :src="require('@/assets/our_image.jpg')"></el-image>
+          <el-image :src="require('@/assets/our_image.jpg')"></el-image> 
+        </div>
+
+        
+          
+    </div>
     </el-main>
+
     <el-footer style="height: 100%">
-      <div id="opensourceList" class="opensourceList">오픈소스 리스트</div>
+      <div id="opensourceList" class="opensourceList">오픈소스 리스트
+        <div class="opensourcelist_img" > 
+          <el-image :src="require('@/assets/element.jpg')"></el-image>
+          <el-image :src="require('@/assets/magenta.jpg')"></el-image> 
+          <el-image :src="require('@/assets/ndejs.jpg')"></el-image>
+          <el-image :src="require('@/assets/Vue.jpg')"></el-image> 
+        </div>
+      </div>
     </el-footer>
   </el-container>
 </template>
@@ -62,7 +103,36 @@
 <script>
 export default {
   name: "Home",
+  data() {
+      return {
+        tableData: [{
+          rank: '1',
+          name: 'New song1',
+          length: '03:50'
+        }, {
+          rank: '2',
+          name: 'New song2',
+          length: '02:50'
+        }, {
+          rank: '3',
+          name: 'New song3',
+          length: '03:30'
+        }
+        ],
+        currentRow: null
+      }
+    },
+    methods: {
+      setCurrent(row) {
+        this.$refs.singleTable.setCurrentRow(row);
+      },
+      handleCurrentChange(val) {
+        this.currentRow = val;
+      }
+    }
 };
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -117,13 +187,30 @@ a {
 }
 
 .el-footer {
-  background-color: yellowgreen;
+  background-color: gray;
   text-align: center;
 }
 
 .opensourceList {
-  height: 200px;
-  background-color: beige;
+  height: 100px;
+  background-color: white;
   text-align: center;
 }
+
+.el-table { 
+  text-align: center;
+  margin: auto;
+  margin-top: 50px;
+  }
+
+.our_image .el-image {
+  width: 100px; height: 100px; 
+  margin: 30px;
+}
+.opensourcelist_img .el-image {
+  width: auto; height: 30%; 
+  margin: 10px;
+  
+}
+
 </style>
