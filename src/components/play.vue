@@ -114,7 +114,7 @@ export default {
   },
 };
 </script>
-<style >
+<style scoped>
 .el-form {
   position: absolute;
   background-color: white;

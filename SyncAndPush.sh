@@ -17,7 +17,7 @@ read commitMessage
 
 # main 브랜치 동기화
 git stash clear
-git stash -all
+git stash -u
 git fetch --all
 git reset --hard origin/main
 
