@@ -146,7 +146,7 @@ export default {
 .el-radio-button {
   display: block;
 }
-.el-radio-button:last-child .el-radio-button__inner {
+/* .el-radio-button:last-child .el-radio-button__inner {
   border-radius: 6px;
   text-align: center;
 }
@@ -158,10 +158,9 @@ export default {
   border: 1px solid #dcdfe6;
   border-radius: 6px;
   width: 100%;
-  /* height: 100px; */
   line-height: 2;
   font-size: 35px;
-}
+} */
 .el-slider {
   width: 100%;
   margin-bottom: 50px;
