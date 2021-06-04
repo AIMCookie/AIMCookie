@@ -5,7 +5,7 @@
     <!-- <h1>Dashboard</h1> -->
     <div class="content-box">
       <div class="title"><span>작곡 중 노래</span></div>
-      <el-table :data="creating_music" style="width: 100%">
+      <el-table :data="creating_music" style="width: 700px">
         <el-table-column prop="No" label="No." width="180"> </el-table-column>
         <el-table-column prop="name" label="Name" width="180">
         </el-table-column>
@@ -14,7 +14,7 @@
     </div>
     <div class="content-box">
       <div class="title"><span>제작 노래 리스트</span></div>
-      <el-table :data="music_list" style="width: 100%">
+      <el-table :data="music_list" style="width: 700px">
         <el-table-column prop="No" label="No." width="180"> </el-table-column>
         <el-table-column prop="name" label="Name" width="180">
         </el-table-column>
@@ -23,7 +23,7 @@
     </div>
     <div class="content-box">
       <div class="title"><span>최근 댓글 리스트</span></div>
-      <el-table :data="rec_comment_list" style="width: 100%">
+      <el-table :data="rec_comment_list" style="width: 700px">
         <el-table-column prop="No" label="No." width="180"> </el-table-column>
         <el-table-column prop="name" label="Name" width="180">
         </el-table-column>
