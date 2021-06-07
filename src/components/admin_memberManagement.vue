@@ -8,7 +8,7 @@
             </div>
             <div v-if="isSearch">
                 <h2> Search </h2>
-                <div class ="input-group" style="margin-bottom:10%;">
+                <div class ="input-group" style="margin-top:6%;">
                     <input type="text" class="form-control" placeholder="ID" v-model="searchUser_id" @keyup.enter ="searchUser(searchUser_id)">
                     <input type="text" class="form-control" placeholder="이름" v-model="searchName" @keyup.enter ="searchUser(searchName)">
                     <input type="text" class="form-control" placeholder="이메일" v-model="searchEmail" @keyup.enter ="searchUser(searchEmail)">
@@ -31,12 +31,11 @@
             </div>
             <div v-if="!isSearch">
                 <h2> Filtering </h2>
-                <div class ="input-group" style="margin-bottom:5%;">
+                <div class ="input-group" style="margin-top:5%;">
                 
-                <div class ="input-group" style="margin-bottom:5%; width:540%" >
+                <div class ="input-group" style="margin-top:2%; width:540%" >
                     <input type="text" class="form-control" placeholder="이곳에 입력하세요." v-model="filterText">
                 </div>
- 
                 </div>
                 <ul class="list-group">
                     <li class="list-group-item" v-for="(user) in filterUsers" v-bind:key="user">
@@ -45,10 +44,10 @@
                 </ul>
             </div>
         </div>
-        <div style="width:50%; padding-right : 30%; float:left;">
+        <div style="width:50%; padding-right : 10%; float:left;">
             <br><br>
             <h2> User Management </h2>
-            <div class ="input-group" style="margin-bottom:10%;">
+            <div class ="input-group" style="margin-bottom:6%;">
                 <input type="text" class="form-control" placeholder="ID" v-model="name" @keyup.enter ="createUser(user_id)">
                 <input type="text" class="form-control" placeholder="이름" v-model="age" @keyup.enter ="createUser(name)">
                 <input type="text" class="form-control" placeholder="이메일" v-model="sex" @keyup.enter ="createUser(email)">
@@ -461,6 +460,6 @@
     }
 </script>
 
-<style lang="" scopped>
+<style lang="" scoped>
     
 </style>
