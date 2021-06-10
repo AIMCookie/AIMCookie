@@ -2,7 +2,7 @@
   <div id="playCanvas" ref="playCanvas"></div>
   <button class="neon-button" @click="playBtn" v-if="!isStarted">Play</button>
 
-  <div v-if="isLoaded" :style="musicSliderStyle">
+  <!-- <div v-if="isLoaded" :style="musicSliderStyle">
     <span style="color:white">음악 속도</span>
     <el-slider
       v-model="musicTempo"
@@ -10,9 +10,19 @@
       show-stops
       :min="120"
       :max="300"
-      ref="musicSlider"
     >
     </el-slider>
+  </div> -->
+  <div :style="rangeDivStyle" v-if="isLoaded">
+    <span id="rangeValue">{{ musicTempo }}</span>
+    <input
+      class="range"
+      type="range"
+      :value="musicTempo"
+      min="120"
+      max="300"
+      @input="onChangeSlider"
+    />
   </div>
 
   <!-- 처음 캔버스 -->
@@ -118,13 +128,12 @@ export default {
         top: 0,
         margin: "0px",
       },
-      musicSliderStyle: {
+      completeBtnStyle: {
         position: "absolute",
         left: 0,
         top: 0,
-        width: "300px",
       },
-      completeBtnStyle: {
+      rangeDivStyle: {
         position: "absolute",
         left: 0,
         top: 0,
@@ -249,11 +258,11 @@ export default {
                 this.$refs["initCanvas"].style.width = width + "px";
                 this.$refs["initCanvas"].style.height = height + "px";
 
-                this.musicSliderStyle.left =
+                this.rangeDivStyle.left =
                   this.$refs.playCanvas.getClientRects()[0].width / 2 -
                   150 +
                   "px";
-                this.musicSliderStyle.top =
+                this.rangeDivStyle.top =
                   this.$refs.playCanvas.getClientRects()[0].height / 2 -
                   350 +
                   "px";
@@ -284,11 +293,8 @@ export default {
       }
     },
     clickResetInitBtn() {
-      if (this.musicPlayer.isPlaying()) {
-        this.musicPlayer.stop();
-      }
+      this.musicPlayer.stop();
       this.myP5.setLoading(true);
-      this.isLoaded = false;
 
       this.musicVae
         .sample(1, undefined, undefined, undefined, this.musicTempo)
@@ -318,7 +324,6 @@ export default {
           this.musicList[0].sample = sample[0];
 
           this.focusCanvasViz = initViz;
-          this.isLoaded = true;
           this.btnShow = true;
           this.myP5.setLoading(false);
 
@@ -339,6 +344,8 @@ export default {
     },
     clickPlayInitBtn() {
       if (!this.initPlay) {
+        this.musicPlayer.stop();
+
         this.musicVae
           .sample(4, undefined, undefined, undefined, this.musicTempo)
           .then((sample) => {
@@ -448,9 +455,9 @@ export default {
             this.$refs.initCanvas.style.transition = "transform 0.7s linear 0s";
             this.$refs.initCanvas.style.transform =
               "translate(" + destX + "px, " + destY + "px)";
-            this.musicSliderStyle.transition = "transform 0.7s linear 0s";
-            this.musicSliderStyle.transform =
-              "translate(" + destX + "px, " + 0 + "px)";
+            this.rangeDivStyle.transition = "transform 0.7s linear 0s";
+            this.rangeDivStyle.transform =
+              "translate(" + destX + "px, " + (destY) + "px)";
             this.initPlay = true;
             this.btnShow = false;
 
@@ -482,6 +489,9 @@ export default {
           this.mm.sequences.concatenate(this.musicCombinationList)
         );
       }
+    },
+    onChangeSlider(e) {
+      this.musicTempo = e.target.value;
     },
     pickMusic(e) {
       if (this.initPlay) {
@@ -651,7 +661,7 @@ export default {
       // Create midi out of magenteSequence
       var seq = this.mm.sequences.concatenate(this.musicCombinationList);
       console.log(seq);
-      seq.notes.forEach(n => n.velocity = 120);
+      seq.notes.forEach((n) => (n.velocity = 120));
       const magentaMidi = this.mm.sequenceProtoToMidi(seq);
 
       // Convert byte array to file
@@ -743,5 +753,37 @@ export default {
 }
 .resetInitBtn {
   position: absolute;
+}
+
+.rangeDiv {
+  position: absolute;
+}
+#rangeValue {
+  position: relative;
+  display: block;
+  text-align: center;
+  font-size: 6em;
+  color: #999;
+  font-weight: 400;
+}
+.range {
+  width: 300px;
+  height: 15px;
+  -webkit-appearance: none;
+  background: #111;
+  outline: none;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 1);
+}
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #00fd0a;
+  cursor: pointer;
+  border: 4px solid #333;
+  box-shadow: -407px 0 0 400px #00fd0a;
 }
 </style>
