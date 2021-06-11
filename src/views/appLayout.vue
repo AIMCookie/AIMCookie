@@ -53,6 +53,5 @@ body {
 .el-main{
   position: relative;
   padding:0;
-  overflow: hidden;
 }
 </style>
