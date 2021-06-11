@@ -1,8 +1,9 @@
 <template>
-  <div id="playCanvas" ref="playCanvas"></div>
-  <button class="neon-button" @click="playBtn" v-if="!isStarted">Play</button>
+  <div id="playPage">
+    <div id="playCanvas" ref="playCanvas"></div>
+    <button class="neon-button" @click="playBtn" v-if="!isStarted">Play</button>
 
-  <!-- <div v-if="isLoaded" :style="musicSliderStyle">
+    <!-- <div v-if="isLoaded" :style="musicSliderStyle">
     <span style="color:white">음악 속도</span>
     <el-slider
       v-model="musicTempo"
@@ -13,86 +14,87 @@
     >
     </el-slider>
   </div> -->
-  <div :style="rangeDivStyle" v-if="isLoaded">
-    <span id="rangeValue">{{ musicTempo }}</span>
-    <input
-      class="range"
-      type="range"
-      :value="musicTempo"
-      min="120"
-      max="300"
-      @input="onChangeSlider"
-    />
+    <div :style="rangeDivStyle" v-if="isLoaded">
+      <span id="rangeValue">{{ musicTempo }}</span>
+      <input
+        class="range"
+        type="range"
+        :value="musicTempo"
+        min="120"
+        max="300"
+        @input="onChangeSlider"
+      />
+    </div>
+
+    <!-- 처음 캔버스 -->
+    <canvas
+      :class="{ initCanvasActive: isLoaded }"
+      ref="initCanvas"
+      @mouseover="onmouseoverCanvas"
+      @mouseout="onmouseoutCanvas"
+    ></canvas>
+
+    <el-button
+      v-if="btnShow"
+      :style="resetInitBtnStyle"
+      icon="el-icon-refresh-right"
+      @click="clickResetInitBtn"
+      circle
+    ></el-button>
+    <el-button
+      v-if="btnShow"
+      :style="playInitBtnStyle"
+      @click="clickPlayInitBtn"
+      icon="el-icon-video-play"
+      circle
+    ></el-button>
+
+    <!-- 반복 작업 캔버스 -->
+    <canvas
+      :class="{ initCanvasActive: initPlay }"
+      ref="musicCanvas1"
+      @mouseover="onmouseoverCanvas"
+      @mouseout="onmouseoutCanvas"
+      @click="pickMusic"
+    ></canvas>
+    <canvas
+      :class="{ initCanvasActive: initPlay }"
+      ref="musicCanvas2"
+      @mouseover="onmouseoverCanvas"
+      @mouseout="onmouseoutCanvas"
+      @click="pickMusic"
+    ></canvas>
+    <canvas
+      :class="{ initCanvasActive: initPlay }"
+      ref="musicCanvas3"
+      @mouseover="onmouseoverCanvas"
+      @mouseout="onmouseoutCanvas"
+      @click="pickMusic"
+    ></canvas>
+    <canvas
+      :class="{ initCanvasActive: initPlay }"
+      ref="musicCanvas4"
+      @mouseover="onmouseoverCanvas"
+      @mouseout="onmouseoutCanvas"
+      @click="pickMusic"
+    ></canvas>
+
+    <!-- 조합 완료 표시 캔버스 -->
+    <canvas
+      :class="{ initCanvasActive: initPlay }"
+      ref="musicCombinationCanvas"
+      @mouseover="onmouseovermusicCombinationCanvas"
+      @mouseout="onmouseoutCanvas"
+    ></canvas>
+    <el-button
+      v-if="initPlay"
+      :style="completeBtnStyle"
+      @click="clickCompleteBtn"
+      icon="el-icon-check"
+      circle
+    ></el-button>
+    <a href="#" v-show="false" ref="downloadElement"></a>
   </div>
-
-  <!-- 처음 캔버스 -->
-  <canvas
-    :class="{ initCanvasActive: isLoaded }"
-    ref="initCanvas"
-    @mouseover="onmouseoverCanvas"
-    @mouseout="onmouseoutCanvas"
-  ></canvas>
-
-  <el-button
-    v-if="btnShow"
-    :style="resetInitBtnStyle"
-    icon="el-icon-refresh-right"
-    @click="clickResetInitBtn"
-    circle
-  ></el-button>
-  <el-button
-    v-if="btnShow"
-    :style="playInitBtnStyle"
-    @click="clickPlayInitBtn"
-    icon="el-icon-video-play"
-    circle
-  ></el-button>
-
-  <!-- 반복 작업 캔버스 -->
-  <canvas
-    :class="{ initCanvasActive: initPlay }"
-    ref="musicCanvas1"
-    @mouseover="onmouseoverCanvas"
-    @mouseout="onmouseoutCanvas"
-    @click="pickMusic"
-  ></canvas>
-  <canvas
-    :class="{ initCanvasActive: initPlay }"
-    ref="musicCanvas2"
-    @mouseover="onmouseoverCanvas"
-    @mouseout="onmouseoutCanvas"
-    @click="pickMusic"
-  ></canvas>
-  <canvas
-    :class="{ initCanvasActive: initPlay }"
-    ref="musicCanvas3"
-    @mouseover="onmouseoverCanvas"
-    @mouseout="onmouseoutCanvas"
-    @click="pickMusic"
-  ></canvas>
-  <canvas
-    :class="{ initCanvasActive: initPlay }"
-    ref="musicCanvas4"
-    @mouseover="onmouseoverCanvas"
-    @mouseout="onmouseoutCanvas"
-    @click="pickMusic"
-  ></canvas>
-
-  <!-- 조합 완료 표시 캔버스 -->
-  <canvas
-    :class="{ initCanvasActive: initPlay }"
-    ref="musicCombinationCanvas"
-    @mouseover="onmouseovermusicCombinationCanvas"
-    @mouseout="onmouseoutCanvas"
-  ></canvas>
-  <el-button
-    v-if="initPlay"
-    :style="completeBtnStyle"
-    @click="clickCompleteBtn"
-    icon="el-icon-check"
-    circle
-  ></el-button>
-  <a href="#" v-show="false" ref="downloadElement"></a>
 </template>
 <script>
 import p5 from "@/libraries/sketch_play.js";
@@ -457,7 +459,7 @@ export default {
               "translate(" + destX + "px, " + destY + "px)";
             this.rangeDivStyle.transition = "transform 0.7s linear 0s";
             this.rangeDivStyle.transform =
-              "translate(" + destX + "px, " + (destY) + "px)";
+              "translate(" + destX + "px, " + destY + "px)";
             this.initPlay = true;
             this.btnShow = false;
 
@@ -677,6 +679,11 @@ export default {
 };
 </script>
 <style scoped>
+#playPage{
+  overflow:hidden;
+  position: relative;
+  padding:0;
+}
 .neon-button {
   font-size: 4rem;
   position: absolute;
