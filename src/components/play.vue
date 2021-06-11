@@ -683,6 +683,7 @@ export default {
   overflow:hidden;
   position: relative;
   padding:0;
+  height:100%;
 }
 .neon-button {
   font-size: 4rem;
