@@ -29,7 +29,7 @@
           <span>문의하기</span>
         </el-menu-item>
       </el-menu>
-      <div class="nickname" @click="$router.push({ name: 'admin' })">
+      <div class="nickname" @click="$router.push({ name: 'admin_memberManagement' })">
         <i class="el-icon-user"></i>
         <span>닉네임A</span>
       </div>
