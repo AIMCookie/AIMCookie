@@ -245,7 +245,7 @@ a {
 }
 .productIntro {
   height: 580px;
-  background-color: azure;
+  /* background-color: azure; */
   text-align: center;
   background-image: url("../assets/cookie.png");
 }
