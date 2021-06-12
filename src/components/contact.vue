@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Contact</h1>
     <div id="wrap">
       <div class="title-box"><span class="title">문의하기</span></div>
       <div class="content-box">
