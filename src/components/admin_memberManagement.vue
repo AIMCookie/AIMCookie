@@ -51,7 +51,7 @@ export default defineComponent({
     };
   },
   created() {
-    for (var i = 1; i <= 100; ++i) {
+    for (var i = 1; i <= 50; ++i) {
       this.tableData.push({
         id: "user" + i,
         name: "유저명" + i,
