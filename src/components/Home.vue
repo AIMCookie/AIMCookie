@@ -71,15 +71,15 @@
               type="primary"
               round
               @click="$router.push({ name: 'play' })"
-              ><B>get started</B></el-button
-            >
+              ><b>get started</b></el-button
+            > 
           </div>
         </div>
       </el-card>
 
       <el-card>
         <div id="playList" class="playList">
-          <B>Play List <i class="el-icon-video-play"></i></B>
+          <b>Play List <i class="el-icon-video-play"></i></b>
 
           <el-table
             ref="singleTable"
@@ -118,7 +118,7 @@
       <el-card>
         <div id="teamInfo" class="teamInfo">
           <div>
-            <B>Developer <i class="el-icon-user"></i></B>
+            <b>Developer <i class="el-icon-user"></i></b>
           </div>
 
           <div class="our_image">
