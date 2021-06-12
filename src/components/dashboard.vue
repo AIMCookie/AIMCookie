@@ -3,27 +3,27 @@
 <template>
   <div id="wrap">
     <!-- <h1>Dashboard</h1> -->
-    <div class="content-box">
+    <div class="content-box" style="width: 100%">
       <div class="title"><span>작곡 중 노래</span></div>
-      <el-table :data="creating_music" style="width: 700px">
+      <el-table :data="creating_music">
         <el-table-column prop="No" label="No." width="180"> </el-table-column>
         <el-table-column prop="name" label="Name" width="180">
         </el-table-column>
         <el-table-column prop="length" label="Length"> </el-table-column>
       </el-table>
     </div>
-    <div class="content-box">
+    <div class="content-box" style="width: 100%">
       <div class="title"><span>제작 노래 리스트</span></div>
-      <el-table :data="music_list" style="width: 700px">
+      <el-table :data="music_list" >
         <el-table-column prop="No" label="No." width="180"> </el-table-column>
         <el-table-column prop="name" label="Name" width="180">
         </el-table-column>
         <el-table-column prop="length" label="Length"> </el-table-column>
       </el-table>
     </div>
-    <div class="content-box">
+    <div class="content-box" style="width: 100%">
       <div class="title"><span>최근 댓글 리스트</span></div>
-      <el-table :data="rec_comment_list" style="width: 700px">
+      <el-table :data="rec_comment_list" >
         <el-table-column prop="No" label="No." width="180"> </el-table-column>
         <el-table-column prop="name" label="Name" width="180">
         </el-table-column>
@@ -103,7 +103,7 @@ export default {
 .title {
   padding: auto;
   height: 40px;
-  width: 700px;
+  width: 100%;
   background: #99a9bf;
   border-radius: 4px;
 }
