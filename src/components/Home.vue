@@ -29,10 +29,31 @@
           <span>문의하기</span>
         </el-menu-item>
       </el-menu>
-      <div class="nickname" @click="$router.push({ name: 'admin_memberManagement' })">
-        <i class="el-icon-user"></i>
-        <span>닉네임A</span>
-      </div>
+      
+        <div class="nickname" @click="$router.push({ name: 'admin' })">
+          <i class="el-icon-user"></i>
+          <span>닉네임A</span>
+        </div>
+        <div class="login_btn">
+          <el-button type="text" @click="centerDialogVisible = true">Login</el-button>
+          <el-dialog
+           title="Login"
+           v-model="centerDialogVisible"
+           width="30%"
+           center>
+          <div class="input_idpw">
+            <el-input placeholder="Please input ID" v-model="input"></el-input>
+            <el-input placeholder="Please input Password" v-model="input" show-password></el-input>
+          </div>
+          <template #footer>
+            <span class="dialog-footer">
+              <el-button @click="centerDialogVisible = false">Cancel</el-button>
+              <el-button type="primary" @click="centerDialogVisible = false">Confirm</el-button>
+            </span>
+          </template>
+          </el-dialog>
+        </div>
+      
     </el-header>
     <el-main>
       <div id="productIntro" class="productIntro">
@@ -107,10 +128,12 @@
 </template>
 
 <script>
+//import { defineComponent, ref } from 'vue'
 export default {
   name: "Home",
   data() {
       return {
+        centerDialogVisible: false,
         tableData: [{
           rank: '1',
           name: 'New song1',
@@ -128,6 +151,11 @@ export default {
         currentRow: null
       }
     },
+  //   setup() {
+  //   return {
+  //     input: ref('')
+  //   }
+  // },
     methods: {
       setCurrent(row) {
         this.$refs.singleTable.setCurrentRow(row);
@@ -136,7 +164,9 @@ export default {
         this.currentRow = val;
       }
     }
+    
 };
+
 
 
 </script>
@@ -162,6 +192,15 @@ a {
 .nickname {
   margin-left: auto;
   margin-right: 50px;
+}
+.login_btn{
+  margin-right: 100px;
+}
+.input_idpw{
+  
+  display: initial;
+  justify-content: center;
+  align-items: center;
 }
 
 .el-menu {
