@@ -1,5 +1,5 @@
 {
-    "include": [
-      "./src/**/*"
+    "include":[
+        "./frontend/src/**/*"
     ]
 }

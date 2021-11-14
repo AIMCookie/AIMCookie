@@ -27,7 +27,7 @@ git stash -u
 git fetch --all
 
 #main 브랜치의 가장 최신 버전으로 초기화
-git reset --hard origin/main
+git reset --hard origin/aimcookie-v2
 
 #작업 가져오기
 git stash pop
