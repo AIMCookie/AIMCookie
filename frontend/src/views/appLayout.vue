@@ -26,6 +26,26 @@
             <v-list-item-title @click="$router.push({ name: 'play' }).catch(()=>{});">플레이</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+
+        <v-list-item link>
+          <v-list-item-icon>
+            <v-icon >mdi-party-popper</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title @click="$router.push({ name: 'community' }).catch(()=>{});">커뮤니티</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item link>
+          <v-list-item-icon>
+            <v-icon >mdi-account-outline</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title @click="$router.push({ name: 'contact' }).catch(()=>{});">문의하기</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-main style="overflow:hidden;">

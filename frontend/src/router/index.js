@@ -26,7 +26,17 @@ const routes = [
       {
         path:'play',
         name:'play',
-        component : ()=> import('@/components/play.vue')
+        component : ()=> import('@/components/play copy.vue')
+      },
+      {
+        path:'community',
+        name:'community',
+        component : ()=> import('@/components/community.vue')
+      },
+      {
+        path:'contact',
+        name:'contact',
+        component : ()=> import('@/components/contact.vue')
       }
     ]
   },
